@@ -5,7 +5,7 @@ def bucket_sort(arr: list[int], range_id: int) -> list[int]:
 
     i = 0
     for number in range(len(number_counts)):
-        for number_count in range(number_counts[number]):
+        for _ in range(number_counts[number]):
             arr[i] = number
             i += 1
 
