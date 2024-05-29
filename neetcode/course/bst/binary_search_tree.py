@@ -6,27 +6,31 @@ class Node:
 
 
 def insert(node, key):
-    if node is None:  # base case -> insertion slot found
+    if node is None:  # base case -> insert new node
         return Node(key)
 
     if key < node.key:
-        node.left = insert(node.left, key)  # insert lower child
+        # insert lower child
+        node.left = insert(node.left, key)
     elif key > node.key:
-        node.right = insert(node.right, key)  # insert higher child
+        # insert higher child
+        node.right = insert(node.right, key)
 
     return node
 
 
-def search(node, search_key):
+def search(node, target):
     if node is None:  # base case -> empty node
         return None
-    if node.key == search_key:  # base case -> node found
+    if node.key == target:  # base case -> node found
         return node
 
-    if search_key < node.key:
-        return search(node.left, search_key)  # lower
+    if target < node.key:
+        # move lower
+        return search(node.left, target)
     else:
-        return search(node.right, search_key)  # higher
+        # move higher
+        return search(node.right, target)
 
 
 def find_min_node(node):
@@ -45,15 +49,18 @@ def remove(node, key):
     elif key > node.key:
         node.right = remove(node.right, key)
     else:
-        # node has 2 children
-        if node.left is None:
+        # node found
+        if node.right is None:
+            # node has single left child or none
+            return node.left  # can be None when no children
+        elif node.left is None:
+            # node has single right child
             return node.right
-        elif node.right is None:
-            return node.left
         else:
-            min_node = find_min_node(node.right)
-            node.key = min_node.key
-            node.right = remove(node.right, min_node.key)
+            # node has 2 children - swap node to be removed value with lowest
+            min_node = find_min_node(node.right)  # find lowest child in right subtree
+            node.key = min_node.key  # swap node value with lowest node value
+            node.right = remove(node.right, min_node.key)  # remove lowest child in right subtree
 
     return node
 
