@@ -19,9 +19,8 @@ class MinHeap:
             return self.heap.pop()
 
         min_item = self.heap[1]
-
         self.heap[1] = self.heap.pop()  # Move last item to the root
-        self.percolate_down(1)
+        self.percolate_down(1)  # Percolate down -> move current down until any of children is lower
         return min_item
 
     def heapify(self, arr):
@@ -29,9 +28,9 @@ class MinHeap:
         arr.append(arr[0])
 
         self.heap = arr
-        cur = (len(self.heap) - 1) // 2
+        cur = (len(self.heap) - 1) // 2  # Can safely skip half of array -> no children
         while cur > 0:
-            self.percolate_down(cur)
+            self.percolate_down(cur)  # Percolate down -> move current down until any of children is lower
             cur -= 1
 
     def percolate_down(self, i):
