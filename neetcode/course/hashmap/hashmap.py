@@ -34,7 +34,7 @@ class HashMap:
 
         while True:
             # Open addressing is used to resolve collisions,
-            # Loop through hashed key until empty slot if not exist
+            # Loop through hashed key until empty slot not found
             if self.map[index] == None:
                 self.map[index] = Pair(key, val)  # Empty slot found
                 self.size += 1
@@ -50,6 +50,7 @@ class HashMap:
                 self.map[index].val = val
                 return
 
+            # Collision -> find next available slot
             index += 1
             index = index % self.capacity  # Keep next available slot index in bounds -> will go back to first slot and forwards
 
