@@ -22,7 +22,7 @@ class HashMap:
         # Open addressing is used to resolve collisions,
         # Loop through hashed key until empty slot if not exist
         while self.map[index] is not None:
-            if self.map[index].key == key:
+            if self.map[index].key == key:  # Key found
                 return self.map[index].value
             index += 1
             index = index % self.capacity  # Keep next available slot index in bounds -> will go back to first slot and forwards
@@ -36,12 +36,13 @@ class HashMap:
             # Open addressing is used to resolve collisions,
             # Loop through hashed key until empty slot if not exist
             if self.map[index] == None:
-                self.map[index] = Pair(key, val)
+                self.map[index] = Pair(key, val)  # Empty slot found
                 self.size += 1
 
                 # Double the array if size is more than 50% of capacity
                 if self.size >= self.capacity // 2:
                     self.rehash()
+
                 return
 
             # Key exist -> simply override value (no duplicates)
