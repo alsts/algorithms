@@ -57,7 +57,7 @@ class MinHeap:
         return self.heap[2 * i + 1] < self.heap[i]
 
     def leftChildLowerThanCurrent(self, i):
-        return self.heap[2 * i + 1] < self.heap[i]
+        return self.heap[2 * i] < self.heap[i]
 
 
 if __name__ == "__main__":
@@ -80,3 +80,10 @@ if __name__ == "__main__":
     print(minHeap.pop())
     print(minHeap.pop())
     print(minHeap.pop())
+
+    print("######## Heapify ########")
+    minHeap2 = MinHeap()
+    minHeap2.heapify([17, 10, 6, 19, 3, 4, 8, 1])
+
+    print(minHeap2.pop())
+    print(minHeap2.pop())
