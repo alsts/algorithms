@@ -47,7 +47,7 @@ class HashMap:
 
             # Key exist -> simply override value (no duplicates)
             elif self.map[index].key == key:
-                self.map[index].val = val
+                self.map[index].value = val
                 return
 
             # Collision -> find next available slot
@@ -76,6 +76,8 @@ hashmap = HashMap()
 hashmap.put("Alice", "NYC")
 hashmap.put("Brad", "CHI")
 hashmap.put("Mark", "NAR")
+
+print(hashmap.get("Mark"))
 
 for i in range(hashmap.capacity):
     if hashmap.map[i]:
