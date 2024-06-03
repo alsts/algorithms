@@ -38,9 +38,11 @@ class MinHeap:
             if self.currentHasRightChild(i) and self.rightChildLowerThanLeft(i) and self.rightChildLowerThanCurrent(i):
                 # Swap Current with Right child - move current node Down
                 self.heap[2 * i + 1], self.heap[i] = self.heap[i], self.heap[2 * i + 1]
+                i = 2 * i + 1
             elif self.leftChildLowerThanCurrent(i):
                 # Swap Current with Left child - move current node Down
                 self.heap[2 * i], self.heap[i] = self.heap[i], self.heap[2 * i]
+                i = 2 * i
             else:
                 # Current node is lower than its children
                 break
@@ -48,7 +50,7 @@ class MinHeap:
     def currentHasRightChild(self, i):
         return 2 * i + 1 < len(self.heap)
 
-    def rightChildLowerThanLeft(self, i):
+    def rightChildLowerThanLeft(self, i):  # In heap if has right -> must have left child!!!
         return self.heap[2 * i + 1] < self.heap[2 * i]
 
     def rightChildLowerThanCurrent(self, i):
