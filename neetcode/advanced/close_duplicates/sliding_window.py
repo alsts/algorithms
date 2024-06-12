@@ -3,10 +3,10 @@ def close_duplicates_sliding_window(arr, k):
     L = 0
 
     for R in range(len(arr)):
-        if R - L + 1 > k:
-            window.remove(arr[L])
+        if R - L + 1 > k:  # False only when window k is not fully grown
+            window.remove(arr[L])  # Shift window to the right
             L += 1
-        if arr[R] in window:
+        if arr[R] in window:  # Duplicate found
             return True
         window.add(arr[R])
 
