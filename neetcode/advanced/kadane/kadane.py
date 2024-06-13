@@ -6,9 +6,9 @@ def kadane(arr: list[int]) -> int:
 
     max_sum = arr[0]
     cur_sum = 0
-    for i in range(len(arr)):
+    for n in arr:
         cur_sum = max(cur_sum, 0)  # reset to 0 if sum range is negative
-        cur_sum += arr[i]
+        cur_sum += n
         max_sum = max(max_sum, cur_sum)
 
     return max_sum
