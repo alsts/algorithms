@@ -4,7 +4,7 @@ class UnionFind:
         self.parents = {}
         self.ranks = {}
 
-        # fill each Tree height and parent
+        # fill each Tree height and parent Initial state
         for node in range(1, nodes_count + 1):
             self.parents[node] = node  # parent to itself (indicate that not have parent yet)
             self.ranks[node] = 0  # height of Tree is 0
@@ -39,7 +39,6 @@ class UnionFind:
 
 union_find = UnionFind(4)
 
-print(union_find.union(1,2))
-print(union_find.union(2,4))
-print(union_find.union(4,1)) # Cycle Detected
-
+print(union_find.union(1, 2))
+print(union_find.union(2, 4))
+print(union_find.union(4, 1))  # Cycle Detected
