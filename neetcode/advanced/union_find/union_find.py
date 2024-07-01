@@ -25,13 +25,13 @@ class UnionFind:
             return False  # Parents are the same -> Cycle Found
 
         if self.ranks[p1] > self.ranks[p2]:
-            # p1 height is higher - use p1 as Parent for p2
+            # p1 has more children - use p1 as Parent for p2
             self.parents[p2] = p1
         elif self.ranks[p1] < self.ranks[p2]:
-            # p2 height is higher - use p2 as Parent for p1
+            # p2 has more children - use p2 as Parent for p1
             self.parents[p1] = p2
         else:
-            # Equal height for 2 nodes - Arbitrary pick parent for node
+            # Equal amount of children/height for 2 nodes - Arbitrary pick parent for node
             self.parents[p1] = p2
             self.ranks[p2] += 1
         return True
