@@ -5,7 +5,7 @@ def brute_force(arr: list[int]) -> int:
         return -1
 
     max_sum = arr[0]
-    for i in range(len(arr)):  # check all sum combinations for all numbers individually
+    for i in range(len(arr)):  # check all sum combinatorics for all numbers individually
         cur_sum = 0
         for j in range(i, len(arr)):
             cur_sum += arr[j]
