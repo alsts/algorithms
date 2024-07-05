@@ -27,7 +27,6 @@ def find_lowest_cost_node_key(table_arr):
 def dijkstra():
     node_key = find_lowest_cost_node_key(table)
     while node_key is not None:
-
         node_cost_from_start = table[node_key]["cost"]
         node_neighbors = graph[node_key]
 
@@ -43,4 +42,4 @@ def dijkstra():
 
 
 dijkstra()
-# print(costs)
+print(table)
