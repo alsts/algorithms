@@ -7,23 +7,24 @@ import heapq
 # There are n nodes in the graph.
 # Time Complexity: O(E * logV), O(E * logE) is also correct.
 def dijkstra(adj, start):
-    visited = {}
-    min_heap = [(0, start, None)]
+    shortest = {}
+    min_heap = [(0, start, None)]  # add starting node to heap
 
     while min_heap:
-        weight, node, parent = heapq.heappop(min_heap)  # take min weight node
+        node_weight, node, parent = heapq.heappop(min_heap)  # take min weight node (cost from start node)
 
-        if node in visited:  # skip duplicated entries (higher weights)
+        if node in shortest:  # skip duplicated entries (higher weights)
             print("Node skipped: " + node + " with parent: " + parent)
             continue
 
-        visited[node] = (weight, parent)  # mark visited -> 100% lowest weight
+        shortest[node] = (node_weight, parent)  # mark visited -> 100% lowest weight
 
-        for child_node, child_weight in adj[node]:
-            if child_node not in visited:
-                heapq.heappush(min_heap, (weight + child_weight, child_node, node))
+        for neighbour_node, neighbour_weight in adj[node]:
+            if neighbour_node not in shortest:  # if already visited (no point of adding higher weight)
+                cost_from_start = node_weight + neighbour_weight
+                heapq.heappush(min_heap, (cost_from_start, neighbour_node, node))
 
-    return visited
+    return shortest
 
 
 edges = [
